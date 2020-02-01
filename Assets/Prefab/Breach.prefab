@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5491498988200502225}
   - component: {fileID: 5491498988200502226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Breach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
