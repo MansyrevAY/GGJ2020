@@ -4879,7 +4879,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
+
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &126889784
 PrefabInstance:
@@ -4888,6 +4889,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+
     - target: {fileID: 418941945049837666, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: fixInput
@@ -4942,6 +4944,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.7960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 5334278652901724928, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5334278652901724928, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465929605501580907, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6027068342322850300, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
@@ -5036,7 +5053,7 @@ PrefabInstance:
     - target: {fileID: 6500935757449965345, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6500935757449965345, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
@@ -5056,22 +5073,27 @@ PrefabInstance:
     - target: {fileID: 6500935757449965350, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.9529412
+      value: 0.016396035
       objectReference: {fileID: 0}
     - target: {fileID: 6500935757449965350, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.009431116
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6500935757449965350, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.9529412
       objectReference: {fileID: 0}
     - target: {fileID: 6500935757449965351, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_Name
       value: Robot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147311784216778940, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04749769ad303ec4ca8ddbf181d62cc2, type: 3}
@@ -5330,43 +5352,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &699759239 stripped
-PolygonCollider2D:
-  m_CorrespondingSourceObject: {fileID: 4765054687802150596, guid: 0f62d9c6c851cd74bb62005a605509fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 2047149256}
-  m_PrefabAsset: {fileID: 0}
---- !u!60 &1139102237 stripped
-PolygonCollider2D:
-  m_CorrespondingSourceObject: {fileID: 4765054688062067219, guid: 0f62d9c6c851cd74bb62005a605509fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 4765054689177972663}
-  m_PrefabAsset: {fileID: 0}
---- !u!60 &1301584868 stripped
-PolygonCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2896953486718228471, guid: 0f62d9c6c851cd74bb62005a605509fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 2047149256}
-  m_PrefabAsset: {fileID: 0}
---- !u!60 &1350748876 stripped
-PolygonCollider2D:
-  m_CorrespondingSourceObject: {fileID: 6462600022997432757, guid: 0f62d9c6c851cd74bb62005a605509fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 4765054689177972663}
-  m_PrefabAsset: {fileID: 0}
---- !u!60 &1629253246 stripped
-PolygonCollider2D:
-  m_CorrespondingSourceObject: {fileID: 6462600022997432757, guid: 0f62d9c6c851cd74bb62005a605509fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 2047149256}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1647433073 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4765054688145326126, guid: 0f62d9c6c851cd74bb62005a605509fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 4765054689177972663}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1687690926
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -5546,7 +5531,7 @@ Transform:
   - {fileID: 1766132760}
   - {fileID: 1687690927}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1880254054 stripped
 PolygonCollider2D:
@@ -5704,7 +5689,7 @@ PrefabInstance:
     - target: {fileID: 4765054689152372654, guid: 0f62d9c6c851cd74bb62005a605509fa,
         type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4765054689152372654, guid: 0f62d9c6c851cd74bb62005a605509fa,
         type: 3}
@@ -9498,15 +9483,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4765054689152372654, guid: 0f62d9c6c851cd74bb62005a605509fa,
         type: 3}
-      propertyPath: m_ColliderPaths.Array.data[3].m_ColliderPaths.Array.data[0].Array.data[1].Y
-      value: 26652670
+      propertyPath: repairOffset
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4765054689152372654, guid: 0f62d9c6c851cd74bb62005a605509fa,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[3].m_ColliderPaths.Array.data[0].Array.data[2].Y
       value: 26736624
       objectReference: {fileID: 0}
-    - target: {fileID: 4765054689152372654, guid: 0f62d9c6c851cd74bb62005a605509fa,
+    - target: {fileID: 418941945049837666, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: repairOffset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199810489424701940, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[3].m_ColliderPaths.Array.data[0].Array.data[3].Y
       value: 52034520
@@ -9551,7 +9541,22 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[3].m_ColliderPaths.Array.data[0].Array.data[19].Y
       value: -30545384
       objectReference: {fileID: 0}
-    - target: {fileID: 4765054689152372654, guid: 0f62d9c6c851cd74bb62005a605509fa,
+    - target: {fileID: 5334278652901724928, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5334278652901724928, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465929605501580907, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6027068342322850300, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[3].m_ColliderPaths.Array.data[0].Array.data[20].Y
       value: -29865136
@@ -9618,8 +9623,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4765054689152372654, guid: 0f62d9c6c851cd74bb62005a605509fa,
         type: 3}
-      propertyPath: m_ColliderPaths.Array.data[3].m_ColliderPaths.Array.data[0].Array.data[34].Y
-      value: -19758592
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4765054689152372654, guid: 0f62d9c6c851cd74bb62005a605509fa,
         type: 3}
@@ -21413,6 +21418,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Robot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147311784216778940, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7190832711630821984, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
