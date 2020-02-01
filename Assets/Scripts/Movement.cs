@@ -29,8 +29,15 @@ public class Movement : MonoBehaviour
     private float objectWidth;
     private float objectHeight;
     private GameObject camera;
+    private Collider2D childShipCollider;
+    private Collider2D robotCollider;
+    private Rigidbody2D robotRigidbody;
     private GameObject breaches;
     private Rigidbody2D rigidbody2D;
+
+    int currentObjectInstance = -1;
+
+    private bool isInside = true;
 
     private bool flyingMode;
     public bool FlyingMode
@@ -47,6 +54,17 @@ public class Movement : MonoBehaviour
         camera = GameObject.FindGameObjectWithTag("MainCamera");
         screenBounds = camera.GetComponent<Camera>()
             .ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, camera.transform.position.z));
+
+        foreach (Transform item in borders.transform)
+        {
+            if (item.gameObject.name.Equals("Ship (1)"))
+            {
+                childShipCollider = item.gameObject.GetComponent<Collider2D>();
+            }
+        }
+
+        robotCollider = GetComponent<Collider2D>();
+
         breaches = GameObject.FindGameObjectWithTag("BreachesParent");
     }
 
@@ -58,18 +76,34 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 movedPosition = Move();
+        SetInside();
+        
+    }
 
-        if (Input.GetKeyDown((KeyCode) input.fix))
+    private void SetInside()
+    {
+        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, transform.position, 0.1f);
+
+        string res = "";
+
+        foreach (RaycastHit2D item in hit)
         {
-            if (IsInside(movedPosition))
-                FixBreach();
+            res += item.transform.name + ", ";
         }
-    
+
+        if (res.Contains("Ship (1)"))
+            isInside = true;
+        else
+            isInside = false;
     }
 
     private void Update()
     {
+        SetInside();
+        
+
         GetMode();
+
     }
 
     private Vector3 Move()
@@ -94,7 +128,7 @@ public class Movement : MonoBehaviour
 
     private void Roll(Vector3 comparation, Vector2 movementVector)
     {
-        if (IsInside(comparation))
+        if (isInside)
             if(GetComponent<Rigidbody2D>().velocity != movementVector * rollMultiplier) GetComponent<Rigidbody2D>().velocity = movementVector * rollMultiplier;
     }
 
@@ -152,7 +186,7 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKeyDown((KeyCode)input.switchMode))
         {
-            if(IsInside(transform.position))
+            if (isInside)
                 flyingMode = !flyingMode;
             if (flyingMode)
             {
@@ -169,13 +203,15 @@ public class Movement : MonoBehaviour
 
     private void ChangeToFlyModel()
     {
-        GetComponent<Collider2D>().isTrigger = true;
+
+        //GetComponent<Collider2D>().isTrigger = true;
         //rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private void ChangeToRollMode()
     {
         rigidbody2D.velocity = Vector2.zero;
+
 
         GetComponent<Collider2D>().isTrigger = false;
         //rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
@@ -215,6 +251,7 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("No breaches to repair");
         }
+
     }
 
     private bool IsInside(Vector3 mov)
