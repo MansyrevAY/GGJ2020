@@ -91,6 +91,8 @@ public class Movement : MonoBehaviour
             res += item.transform.name + ", ";
         }
 
+        //Debug.Log(res);
+
         if (res.Contains("Ship (1)"))
             isInside = true;
         else
@@ -203,7 +205,7 @@ public class Movement : MonoBehaviour
 
     private void ChangeToFlyModel()
     {
-
+        gameObject.layer = 11;
         //GetComponent<Collider2D>().isTrigger = true;
         //rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
     }
@@ -212,7 +214,7 @@ public class Movement : MonoBehaviour
     {
         rigidbody2D.velocity = Vector2.zero;
 
-
+        gameObject.layer = 10;
         GetComponent<Collider2D>().isTrigger = false;
         //rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
     }
