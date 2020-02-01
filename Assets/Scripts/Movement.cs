@@ -11,6 +11,7 @@ public struct charInput
     public int left;
     public int right;
     public int switchMode;
+    public int fix;
 }
 
 public class Movement : MonoBehaviour
@@ -18,7 +19,7 @@ public class Movement : MonoBehaviour
     public float speed;
     public charInput input;
     public Collider2D borders;
-    
+    public float repairOffset;
     [Range(0,200)]
     public float thrusterMultiplier;
     [Range(0, 200)]
@@ -28,8 +29,8 @@ public class Movement : MonoBehaviour
     private float objectWidth;
     private float objectHeight;
     private GameObject camera;
-    
-    private Rigidbody2D robotRigidbody;
+    private GameObject breaches;
+    private Rigidbody2D rigidbody2D;
 
     private bool flyingMode;
     public bool FlyingMode
@@ -40,13 +41,13 @@ public class Movement : MonoBehaviour
 
     private void Awake()
     {
-        robotRigidbody = GetComponent<Rigidbody2D>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
         objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
         objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
         camera = GameObject.FindGameObjectWithTag("MainCamera");
         screenBounds = camera.GetComponent<Camera>()
             .ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, camera.transform.position.z));
-        
+        breaches = GameObject.FindGameObjectWithTag("BreachesParent");
     }
 
     void Start()
@@ -56,13 +57,19 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 movedPosition = Move();    
+        Vector3 movedPosition = Move();
+
+        if (Input.GetKeyDown((KeyCode) input.fix))
+        {
+            if (IsInside(movedPosition))
+                FixBreach();
+        }
+    
     }
 
     private void Update()
     {
         GetMode();
-
     }
 
     private Vector3 Move()
@@ -78,6 +85,7 @@ public class Movement : MonoBehaviour
         }
         else // flying
         {
+            //transform.Translate(movementVector);
             Fly(movementVector);
         }
 
@@ -92,7 +100,7 @@ public class Movement : MonoBehaviour
 
     private void Fly(Vector2 moveInput)
     {
-        robotRigidbody.AddForce(moveInput * thrusterMultiplier);
+        rigidbody2D.AddForce(moveInput * thrusterMultiplier);
     }
 
     void LateUpdate()
@@ -162,13 +170,51 @@ public class Movement : MonoBehaviour
     private void ChangeToFlyModel()
     {
         GetComponent<Collider2D>().isTrigger = true;
+        //rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private void ChangeToRollMode()
     {
-        robotRigidbody.velocity = Vector2.zero;
+        rigidbody2D.velocity = Vector2.zero;
 
         GetComponent<Collider2D>().isTrigger = false;
+        //rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+    }
+
+    private void FixBreach()
+    {
+        Transform[] breachesPositions = breaches.GetComponentsInChildren<Transform>();
+
+        if(breachesPositions.Length > 1)
+        {
+            int repaired = 0;
+            // Because i = 0 is parent object
+            for (int i = 1; i < breachesPositions.Length; i++)
+            {
+                float robotBreachDistance = Vector3.Distance(breachesPositions[i].position, transform.position);
+                Debug.Log(robotBreachDistance);
+                if (robotBreachDistance < repairOffset)
+                {
+                    breachesPositions[i].gameObject.SetActive(false);
+                    repaired++;
+                }
+            }
+
+            Debug.Log($"Repaired: {repaired}");
+
+            foreach (Transform breachesPosition in breachesPositions)
+            {
+                if (!breachesPosition.gameObject.activeInHierarchy)
+                {
+                    Debug.Log($"{breachesPosition.position} is destroyed");
+                    Destroy(breachesPosition.gameObject);
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("No breaches to repair");
+        }
     }
 
     private bool IsInside(Vector3 mov)

@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Actions : MonoBehaviour
 {
     public float repairOffset;
     public int fixInput;
-    public float fixTime;
+    public float FixSpeed = 0.1f;
 
+    private float fixProgress = 0;
+    private Slider slider;
     private GameObject breaches;
     private Movement movement;
 
@@ -15,16 +18,29 @@ public class Actions : MonoBehaviour
     {
         breaches = GameObject.FindGameObjectWithTag("BreachesParent");
         movement = GetComponent<Movement>();
+        slider = GetComponentInChildren<Slider>();
+        slider.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetKey((KeyCode) fixInput))
+
+        if (Input.GetKey((KeyCode)fixInput))
         {
+
             if (!movement.FlyingMode)
                 FixBreach();
+
         }
+        else
+        {
+            fixProgress = 0;
+            slider.value = fixProgress;
+            slider.gameObject.SetActive(false);
+        }
+
+
     }
 
     private void FixBreach()
@@ -41,8 +57,20 @@ public class Actions : MonoBehaviour
                 Debug.Log(robotBreachDistance);
                 if (robotBreachDistance < repairOffset)
                 {
-                    DisableBreach(breachesPositions[i].gameObject);
-                    repaired++;
+                    if (fixProgress >= 1)
+                    {
+                        DisableBreach(breachesPositions[i].gameObject);
+                        repaired++;
+                        fixProgress = 0;
+                        slider.value = fixProgress;
+                    }
+                    else
+                    {
+                        slider.gameObject.SetActive(true);
+                        fixProgress += FixSpeed;
+                        slider.value = fixProgress;
+                        Debug.Log(fixProgress);
+                    }
                 }
             }
 
