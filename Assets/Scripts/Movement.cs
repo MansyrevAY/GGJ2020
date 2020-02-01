@@ -41,13 +41,12 @@ public class Movement : MonoBehaviour
         camera = GameObject.FindGameObjectWithTag("MainCamera");
         screenBounds = camera.GetComponent<Camera>()
             .ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, camera.transform.position.z));
-        breaches = GameObject.FindGameObjectWithTag("Breaches");
+        breaches = GameObject.FindGameObjectWithTag("BreachesParent");
     }
 
     void Start()
     {
         flyingMode = true;
-        breaches = GameObject.FindGameObjectWithTag("BreachesParent");
     }
 
     void Update()
