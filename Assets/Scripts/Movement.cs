@@ -147,9 +147,16 @@ public class Movement : MonoBehaviour
             else
             {
                 Debug.Log("I am rolling!");
-                rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+                ChangeToRollMode();
             }
         }
+    }
+
+    private void ChangeToRollMode()
+    {
+        rigidbody2D.velocity = Vector2.zero;
+
+        rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
     }
 
     private void FixBreach()
