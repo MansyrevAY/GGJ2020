@@ -22,6 +22,8 @@ public class Movement : MonoBehaviour
     public float repairOffset;
     [Range(0,200)]
     public float thrusterMultiplier;
+    [Range(0, 200)]
+    public float rollMultiplier;
 
     private Vector2 screenBounds;
     private float objectWidth;
@@ -71,8 +73,7 @@ public class Movement : MonoBehaviour
 
         if (!flyingMode) // rolling
         {
-            if (IsInside(comparation))
-                transform.Translate(movementVector);
+            Roll(comparation, movementVector);
         }
         else // flying
         {
@@ -81,6 +82,12 @@ public class Movement : MonoBehaviour
         }
 
         return comparation;
+    }
+
+    private void Roll(Vector3 comparation, Vector2 movementVector)
+    {
+        if (IsInside(comparation))
+            rigidbody2D.velocity = movementVector * rollMultiplier;
     }
 
     private void Fly(Vector2 moveInput)
@@ -142,7 +149,7 @@ public class Movement : MonoBehaviour
             if (flyingMode)
             {
                 Debug.Log("I am flying!");
-                rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+                ChangeToFlyModel();
             }
             else
             {
@@ -152,11 +159,18 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void ChangeToFlyModel()
+    {
+        GetComponent<Collider2D>().isTrigger = true;
+        //rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+    }
+
     private void ChangeToRollMode()
     {
         rigidbody2D.velocity = Vector2.zero;
 
-        rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        GetComponent<Collider2D>().isTrigger = false;
+        //rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
     }
 
     private void FixBreach()
