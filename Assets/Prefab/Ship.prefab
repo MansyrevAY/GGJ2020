@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6773440091968579196}
   - component: {fileID: 5255870507718495212}
   - component: {fileID: 6462600022997432757}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: thruster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 7790613428428911669}
   - component: {fileID: 8582075599271907327}
   - component: {fileID: 2896953486718228471}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: thruster (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 4765054687802150594}
   - component: {fileID: 4765054687802150595}
   - component: {fileID: 4765054687802150596}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: White_triangle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 4765054688062067217}
   - component: {fileID: 4765054688062067218}
   - component: {fileID: 4765054688062067219}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 1460979282009954996}
   - component: {fileID: 4765054689152372653}
   - component: {fileID: 4765054689152372654}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1783,7 +1783,7 @@ GameObject:
   - component: {fileID: 4765054689263661030}
   - component: {fileID: 4765054689263661028}
   - component: {fileID: 3091589402969162853}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: transparent-png-has-black-background-4-transparent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
