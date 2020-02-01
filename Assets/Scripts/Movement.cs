@@ -8,7 +8,20 @@ public class Movement : MonoBehaviour
     public charInput input;
     public Collider2D borders;
 
-    // Update is called once per frame
+    private Vector2 screenBounds;
+    private float objectWidth;
+    private float objectHeight;
+    private GameObject camera;
+
+    void Start()
+    {
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        screenBounds = camera.GetComponent<Camera>()
+            .ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, camera.transform.position.z));
+        objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
+        objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
+    }
+
     void Update()
     {
         Vector2 movementVector = GetVectorForFirstPlayer() * Time.deltaTime * speed;
@@ -16,10 +29,16 @@ public class Movement : MonoBehaviour
         Vector3 comparation = transform.position + new Vector3(movementVector.x, movementVector.y, 0);
 
 
-        
         if(IsInside(comparation))
             transform.Translate(movementVector);
-        
+    }
+
+    void LateUpdate()
+    {
+        Vector3 viewPos = transform.position;
+        viewPos.x = Mathf.Clamp(viewPos.x, screenBounds.x * -1 + objectWidth, screenBounds.x - objectWidth);
+        viewPos.y = Mathf.Clamp(viewPos.y, screenBounds.y * -1 + objectHeight, screenBounds.y - objectHeight);
+        transform.position = viewPos;
     }
 
     private Vector2 GetVectorForFirstPlayer()
