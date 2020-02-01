@@ -726,6 +726,7 @@ MonoBehaviour:
     right: 100
     switchMode: 304
     fix: 0
+
   borders: {fileID: 6279110225408233226, guid: 738657b37916add4c972db5a60aac53b, type: 3}
   repairOffset: 0
   thrusterMultiplier: 100
@@ -745,6 +746,7 @@ MonoBehaviour:
   repairOffset: 0
   fixInput: 0
   FixSpeed: 0.01
+
 --- !u!50 &-2471920124021421121
 Rigidbody2D:
   serializedVersion: 4

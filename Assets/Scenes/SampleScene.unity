@@ -4880,6 +4880,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &126889784
 PrefabInstance:
@@ -4888,10 +4889,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 344800870794505814, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+
+    - target: {fileID: 418941945049837666, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
+      propertyPath: fixInput
+      value: 279
+      objectReference: {fileID: 0}
+    - target: {fileID: 418941945049837666, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: repairOffset
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1199810489424701940, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
@@ -5173,6 +5180,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+
 --- !u!1001 &1546384280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5252,6 +5260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebbf3e7f857c7684a9cd98ca40c578e2, type: 3}
+
 --- !u!1001 &1687690926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9280,10 +9289,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 344800870794505814, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+    - target: {fileID: 418941945049837666, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
+      propertyPath: repairOffset
+      value: 0.7
+
       objectReference: {fileID: 0}
     - target: {fileID: 418941945049837666, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
@@ -9295,6 +9305,7 @@ PrefabInstance:
       propertyPath: repairOffset
       value: 1
       objectReference: {fileID: 0}
+
     - target: {fileID: 1199810489424701940, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_Color.g

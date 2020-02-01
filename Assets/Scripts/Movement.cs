@@ -95,7 +95,7 @@ public class Movement : MonoBehaviour
     private void Roll(Vector3 comparation, Vector2 movementVector)
     {
         if (IsInside(comparation))
-            if(rigidbody2D.velocity != movementVector * rollMultiplier) rigidbody2D.velocity = movementVector * rollMultiplier;
+            if(GetComponent<Rigidbody2D>().velocity != movementVector * rollMultiplier) GetComponent<Rigidbody2D>().velocity = movementVector * rollMultiplier;
     }
 
     private void Fly(Vector2 moveInput)
