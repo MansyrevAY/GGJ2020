@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     public float speed;
     public charInput input;
     public Collider2D borders;
+    public float repairOffset;
 
     private Vector2 screenBounds;
     private float objectWidth;
@@ -15,6 +16,8 @@ public class Movement : MonoBehaviour
     private GameObject camera;
 
     private bool flyingMode;
+
+    private GameObject breaches;
 
     void Start()
     {
@@ -25,6 +28,8 @@ public class Movement : MonoBehaviour
         objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
 
         flyingMode = true;
+
+        breaches = GameObject.FindGameObjectWithTag("Breaches");
     }
 
     void Update()
@@ -33,15 +38,22 @@ public class Movement : MonoBehaviour
 
         GetMode();
 
+        Vector3 comparation = transform.position + new Vector3(movementVector.x, movementVector.y, 0);
+
         if (!flyingMode)
         {
-            Vector3 comparation = transform.position + new Vector3(movementVector.x, movementVector.y, 0);
             if (IsInside(comparation))
                 transform.Translate(movementVector);
         }
         else
         {
             transform.Translate(movementVector);
+        }
+
+        if (Input.GetKeyDown((KeyCode) input.fix))
+        {
+            if (IsInside(comparation))
+                FixBreach();
         }
     
     }
@@ -108,6 +120,42 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void FixBreach()
+    {
+        Transform[] breachesPositions = breaches.GetComponentsInChildren<Transform>();
+
+        if(breachesPositions.Length > 1)
+        {
+            int repaired = 0;
+            // Because i = 0 is parent object
+            for (int i = 1; i < breachesPositions.Length; i++)
+            {
+                float robotBreachDistance = Vector3.Distance(breachesPositions[i].position, transform.position);
+                Debug.Log(robotBreachDistance);
+                if (robotBreachDistance < repairOffset)
+                {
+                    breachesPositions[i].gameObject.SetActive(false);
+                    repaired++;
+                }
+            }
+
+            Debug.Log($"Repaired: {repaired}");
+
+            foreach (Transform breachesPosition in breachesPositions)
+            {
+                if (!breachesPosition.gameObject.activeInHierarchy)
+                {
+                    Debug.Log($"{breachesPosition.position} is destroyed");
+                    Destroy(breachesPosition.gameObject);
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("No breaches to repair");
+        }
+    }
+
     private bool IsInside(Vector3 mov)
     {
         bool isInside = true;
@@ -131,4 +179,5 @@ public struct charInput
     public int left;
     public int right;
     public int switchMode;
+    public int fix;
 }
