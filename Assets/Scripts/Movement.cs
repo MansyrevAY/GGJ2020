@@ -38,8 +38,8 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
-        objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
+        objectWidth = transform.GetComponent<BoxCollider2D>().bounds.extents.x;
+        objectHeight = transform.GetComponent<BoxCollider2D>().bounds.extents.y;
         camera = GameObject.FindGameObjectWithTag("MainCamera");
         screenBounds = camera.GetComponent<Camera>()
             .ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, camera.transform.position.z));
