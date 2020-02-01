@@ -3,59 +3,89 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct charInput
+{
+    public int top;
+    public int bottom;
+    public int left;
+    public int right;
+    public int switchMode;
+    public int fix;
+}
+
 public class Movement : MonoBehaviour
 {
     public float speed;
     public charInput input;
     public Collider2D borders;
     public float repairOffset;
+    [Range(0,200)]
+    public float thrusterMultiplier;
 
     private Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
     private GameObject camera;
+    private GameObject breaches;
+    private Rigidbody2D rigidbody2D;
 
     private bool flyingMode;
 
-    private GameObject breaches;
 
-    void Start()
+    private void Awake()
     {
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
+        objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
         camera = GameObject.FindGameObjectWithTag("MainCamera");
         screenBounds = camera.GetComponent<Camera>()
             .ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, camera.transform.position.z));
-        objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
-        objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
-
-        flyingMode = true;
-
         breaches = GameObject.FindGameObjectWithTag("Breaches");
+    }
+
+    void Start()
+    {
+        flyingMode = true;
     }
 
     void Update()
     {
-        Vector2 movementVector = GetVectorForFirstPlayer() * Time.deltaTime * speed;
+        Vector3 movedPosition = Move();
+
+        if (Input.GetKeyDown((KeyCode) input.fix))
+        {
+            if (IsInside(movedPosition))
+                FixBreach();
+        }
+    
+    }
+
+    private Vector3 Move()
+    {
+        Vector2 movementVector = GetVectorForPlayer() * Time.deltaTime * speed;
 
         GetMode();
 
         Vector3 comparation = transform.position + new Vector3(movementVector.x, movementVector.y, 0);
 
-        if (!flyingMode)
+        if (!flyingMode) // rolling
         {
             if (IsInside(comparation))
                 transform.Translate(movementVector);
         }
-        else
+        else // flying
         {
-            transform.Translate(movementVector);
+            //transform.Translate(movementVector);
+            Fly(movementVector);
         }
 
-        if (Input.GetKeyDown((KeyCode) input.fix))
-        {
-            if (IsInside(comparation))
-                FixBreach();
-        }
-    
+        return comparation;
+    }
+
+    private void Fly(Vector2 moveInput)
+    {
+        rigidbody2D.AddForce(moveInput * thrusterMultiplier);
     }
 
     void LateUpdate()
@@ -66,7 +96,7 @@ public class Movement : MonoBehaviour
         transform.position = viewPos;
     }
 
-    private Vector2 GetVectorForFirstPlayer()
+    private Vector2 GetVectorForPlayer()
     {
         Vector2 vector2 = Vector2.zero;
 
@@ -112,10 +142,12 @@ public class Movement : MonoBehaviour
             if (flyingMode)
             {
                 Debug.Log("I am flying!");
+                rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
             }
             else
             {
                 Debug.Log("I am rolling!");
+                rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
             }
         }
     }
@@ -171,13 +203,4 @@ public class Movement : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public struct charInput
-{
-    public int top;
-    public int bottom;
-    public int left;
-    public int right;
-    public int switchMode;
-    public int fix;
-}
+
