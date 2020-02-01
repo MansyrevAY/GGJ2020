@@ -518,6 +518,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1407413859638544597, guid: 738657b37916add4c972db5a60aac53b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6279110225408233221, guid: 738657b37916add4c972db5a60aac53b,
         type: 3}
       propertyPath: m_Name
@@ -602,6 +607,11 @@ PrefabInstance:
       propertyPath: borders
       value: 
       objectReference: {fileID: 1310925903}
+    - target: {fileID: 6500935757449965344, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: thrusterMultiplier
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6500935757449965345, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_LocalPosition.x
