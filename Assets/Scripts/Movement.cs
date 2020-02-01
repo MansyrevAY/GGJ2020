@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
 
         flyingMode = true;
 
-        breaches = GameObject.FindGameObjectWithTag("Breaches");
+        breaches = GameObject.FindGameObjectWithTag("BreachesParent");
     }
 
     void Update()
