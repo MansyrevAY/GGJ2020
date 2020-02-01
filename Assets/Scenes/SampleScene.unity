@@ -152,7 +152,12 @@ PrefabInstance:
         type: 3}
       propertyPath: borders
       value: 
-      objectReference: {fileID: 1173712792}
+      objectReference: {fileID: 1310925903}
+    - target: {fileID: 6500935757449965344, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: input.switchMode
+      value: 303
+      objectReference: {fileID: 0}
     - target: {fileID: 6500935757449965345, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -313,9 +318,9 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1173712792 stripped
+--- !u!61 &1310925903 stripped
 BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 6279110225408233226, guid: 738657b37916add4c972db5a60aac53b,
+  m_CorrespondingSourceObject: {fileID: 1407413859638544597, guid: 738657b37916add4c972db5a60aac53b,
     type: 3}
   m_PrefabInstance: {fileID: 6279110224402866322}
   m_PrefabAsset: {fileID: 0}
@@ -329,7 +334,7 @@ PrefabInstance:
     - target: {fileID: 6279110225408233221, guid: 738657b37916add4c972db5a60aac53b,
         type: 3}
       propertyPath: m_Name
-      value: Zone Borders
+      value: Ship
       objectReference: {fileID: 0}
     - target: {fileID: 6279110225408233227, guid: 738657b37916add4c972db5a60aac53b,
         type: 3}
@@ -386,6 +391,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6279110225408233227, guid: 738657b37916add4c972db5a60aac53b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6279110225408233227, guid: 738657b37916add4c972db5a60aac53b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 738657b37916add4c972db5a60aac53b, type: 3}
 --- !u!1001 &6500935756591729677
@@ -395,6 +410,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6500935757449965344, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: borders
+      value: 
+      objectReference: {fileID: 1310925903}
     - target: {fileID: 6500935757449965345, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_LocalPosition.x
