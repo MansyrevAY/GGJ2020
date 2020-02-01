@@ -51,7 +51,7 @@ public class Movement : MonoBehaviour
         flyingMode = true;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 movedPosition = Move();
 
@@ -63,12 +63,17 @@ public class Movement : MonoBehaviour
     
     }
 
+    private void Update()
+    {
+        GetMode();
+
+    }
+
     private Vector3 Move()
     {
         Vector2 movementVector = GetVectorForPlayer() * Time.deltaTime * speed;
 
-        GetMode();
-
+        
         Vector3 comparation = transform.position + new Vector3(movementVector.x, movementVector.y, 0);
 
         if (!flyingMode) // rolling
@@ -87,7 +92,7 @@ public class Movement : MonoBehaviour
     private void Roll(Vector3 comparation, Vector2 movementVector)
     {
         if (IsInside(comparation))
-            rigidbody2D.velocity = movementVector * rollMultiplier;
+            if(rigidbody2D.velocity != movementVector * rollMultiplier) rigidbody2D.velocity = movementVector * rollMultiplier;
     }
 
     private void Fly(Vector2 moveInput)
