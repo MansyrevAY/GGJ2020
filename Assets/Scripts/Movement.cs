@@ -72,10 +72,10 @@ public class Movement : MonoBehaviour
     {
         bool isInside = true;
 
-        if (mov.x > borders.bounds.center.x + borders.bounds.extents.x &&
+        if (mov.x > borders.bounds.center.x + borders.bounds.extents.x ||
             mov.x < borders.bounds.center.x - borders.bounds.extents.x)
             isInside = false;
-        if (mov.y > borders.bounds.center.y + borders.bounds.extents.y &&
+        if (mov.y > borders.bounds.center.y + borders.bounds.extents.y ||
             mov.y < borders.bounds.center.y - borders.bounds.extents.y)
             isInside = false;
 
