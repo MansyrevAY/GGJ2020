@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6500935757449965345}
   - component: {fileID: 6500935757449965350}
   - component: {fileID: 6500935757449965344}
+  - component: {fileID: 418941945049837666}
   - component: {fileID: -297505471850523363}
   - component: {fileID: -2471920124021421121}
   m_Layer: 0
@@ -105,9 +106,22 @@ MonoBehaviour:
     switchMode: 304
     fix: 113
   borders: {fileID: 6279110225408233226, guid: 738657b37916add4c972db5a60aac53b, type: 3}
-  repairOffset: 0.7
   thrusterMultiplier: 100
   rollMultiplier: 100
+--- !u!114 &418941945049837666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500935757449965351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ebd37b50cacb14ba21a7620df713c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repairOffset: 0
+  fixOffset: 0
 --- !u!61 &-297505471850523363
 BoxCollider2D:
   m_ObjectHideFlags: 0

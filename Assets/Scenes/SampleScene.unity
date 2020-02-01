@@ -4888,6 +4888,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 418941945049837666, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: repairOffset
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 418941945049837666, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: fixInput
+      value: 279
+      objectReference: {fileID: 0}
     - target: {fileID: 6500935757449965344, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: input.top
@@ -8857,6 +8867,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 418941945049837666, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: repairOffset
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 418941945049837666, guid: 04749769ad303ec4ca8ddbf181d62cc2,
+        type: 3}
+      propertyPath: fixInput
+      value: 113
+      objectReference: {fileID: 0}
     - target: {fileID: 6500935757449965344, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: borders
