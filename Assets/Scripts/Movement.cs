@@ -47,6 +47,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         flyingMode = true;
+        breaches = GameObject.FindGameObjectWithTag("BreachesParent");
     }
 
     void Update()
