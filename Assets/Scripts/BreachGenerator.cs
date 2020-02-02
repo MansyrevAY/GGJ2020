@@ -14,10 +14,12 @@ public class BreachGenerator : MonoBehaviour
     public LayerMask shipMask;
     public LayerMask obstacle;
 
+    public Animator flareAnimator;
+
     public static int CurrentNumberOnShip { get; set; }
 
     public float timeLeft;
-    [HideInInspector]
+//    [HideInInspector]
     public float timeToNextFlare;
 
     public float minTimeToFlare;
@@ -46,8 +48,9 @@ public class BreachGenerator : MonoBehaviour
 
             if (timeToNextFlare < 0)
             {
-                GenerateBreaches();
+                Debug.Log("FLARE");
                 timeToNextFlare = Random.Range(minTimeToFlare, maxTimeToFlare);
+                flareAnimator.SetTrigger("Flare");
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -57,7 +60,7 @@ public class BreachGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateBreaches()
+    public void GenerateBreaches()
     {
         if (CurrentNumberOnShip < maxNumberOnShip)
         {
