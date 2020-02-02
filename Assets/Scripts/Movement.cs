@@ -92,7 +92,7 @@ public class Movement : MonoBehaviour
         RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, transform.position, 0.1f);
 
         string res = "";
-
+        
         foreach (RaycastHit2D item in hit)
         {
             res += item.transform.name + ", ";
