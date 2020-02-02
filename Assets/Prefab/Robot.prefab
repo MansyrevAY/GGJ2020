@@ -5044,7 +5044,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &4398366979860273006
 MonoBehaviour:
@@ -15023,7 +15023,6 @@ MonoBehaviour:
     right: 100
     switchMode: 304
   borders: {fileID: 0}
-  repairOffset: 0
   thrusterMultiplier: 0
   rollMultiplier: 0
   Thrusters:
