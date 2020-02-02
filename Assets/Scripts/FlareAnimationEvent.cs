@@ -8,4 +8,9 @@ public class FlareAnimationEvent : MonoBehaviour
     {
         FindObjectOfType<BreachGenerator>().GenerateBreaches();
     }
+
+    public void PlaySound()
+    {
+        FindObjectOfType<AudioManager>().Play("Flare");
+    }
 }

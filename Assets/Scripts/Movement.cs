@@ -20,7 +20,6 @@ public struct thrusters
     public ParticleSystem left;
     public ParticleSystem right;
     public ParticleSystem bot;
-
 }
 
 public class Movement : MonoBehaviour
@@ -28,10 +27,8 @@ public class Movement : MonoBehaviour
     public float speed;
     public charInput input;
     public Collider2D borders;
-    [Range(0,200)]
-    public float thrusterMultiplier;
-    [Range(0, 200)]
-    public float rollMultiplier;
+    [Range(0, 200)] public float thrusterMultiplier;
+    [Range(0, 200)] public float rollMultiplier;
     public thrusters Thrusters;
 
     private Vector2 screenBounds;
@@ -43,13 +40,14 @@ public class Movement : MonoBehaviour
     private Rigidbody2D robotRigidbody;
     private GameObject breaches;
     private Rigidbody2D rigidbody2D;
-    
+
 
     int currentObjectInstance = -1;
 
     private bool isInside = true;
 
     private bool flyingMode;
+
     public bool FlyingMode
     {
         get { return flyingMode; }
@@ -80,14 +78,13 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        flyingMode = true;
+        flyingMode = false;
     }
 
     void FixedUpdate()
     {
         Vector3 movedPosition = Move();
         SetInside();
-        
     }
 
     private void SetInside()
@@ -112,17 +109,16 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         SetInside();
-        
+
 
         GetMode();
-
     }
 
     private Vector3 Move()
     {
         Vector2 movementVector = GetVectorForPlayer() * Time.deltaTime * speed;
 
-        
+
         Vector3 comparation = transform.position + new Vector3(movementVector.x, movementVector.y, 0);
 
         if (!flyingMode) // rolling
@@ -141,7 +137,8 @@ public class Movement : MonoBehaviour
     private void Roll(Vector3 comparation, Vector2 movementVector)
     {
         if (isInside)
-            if(GetComponent<Rigidbody2D>().velocity != movementVector * rollMultiplier) GetComponent<Rigidbody2D>().velocity = movementVector * rollMultiplier;
+            if (GetComponent<Rigidbody2D>().velocity != movementVector * rollMultiplier)
+                GetComponent<Rigidbody2D>().velocity = movementVector * rollMultiplier;
     }
 
     private void Fly(Vector2 moveInput)
@@ -162,23 +159,25 @@ public class Movement : MonoBehaviour
         Vector2 vector2 = Vector2.zero;
 
 //      To check the pressed key number
-        if (Input.anyKey)
-        {
-            foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-            {
-                if (Input.GetKeyDown(kcode))
-                    Debug.Log("KeyCode down: " + (int)kcode);
-            }
-        }
+//        if (Input.anyKey)
+//        {
+//            foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+//            {
+//                if (Input.GetKeyDown(kcode))
+//                    Debug.Log("KeyCode down: " + (int)kcode);
+//            }
+//        }
 
-        if (Input.GetKey((KeyCode)input.left))
+        if (Input.GetKey((KeyCode) input.left))
         {
             if (FlyingMode)
             {
+                FindObjectOfType<AudioManager>().PlayLoop("Robot");
                 Thrusters.left.gameObject.SetActive(true);
                 if (!Thrusters.left.isPlaying)
                     Thrusters.left.Play();
             }
+
             vector2.x = -1;
         }
         else
@@ -186,14 +185,16 @@ public class Movement : MonoBehaviour
             Thrusters.left.gameObject.SetActive(false);
         }
 
-        if (Input.GetKey((KeyCode)input.right))
+        if (Input.GetKey((KeyCode) input.right))
         {
             if (FlyingMode)
             {
+                FindObjectOfType<AudioManager>().PlayLoop("Robot");
                 Thrusters.right.gameObject.SetActive(true);
                 if (!Thrusters.right.isPlaying)
                     Thrusters.right.Play();
             }
+
             vector2.x = 1;
         }
         else
@@ -201,14 +202,16 @@ public class Movement : MonoBehaviour
             Thrusters.right.gameObject.SetActive(false);
         }
 
-        if (Input.GetKey((KeyCode)input.top))
+        if (Input.GetKey((KeyCode) input.top))
         {
             if (FlyingMode)
             {
+                FindObjectOfType<AudioManager>().PlayLoop("Robot");
                 Thrusters.top.gameObject.SetActive(true);
                 if (!Thrusters.top.isPlaying)
                     Thrusters.top.Play();
             }
+
             vector2.y = 1;
         }
         else
@@ -216,14 +219,16 @@ public class Movement : MonoBehaviour
             Thrusters.top.gameObject.SetActive(false);
         }
 
-        if (Input.GetKey((KeyCode)input.bottom))
+        if (Input.GetKey((KeyCode) input.bottom))
         {
             if (FlyingMode)
             {
+                FindObjectOfType<AudioManager>().PlayLoop("Robot");
                 Thrusters.bot.gameObject.SetActive(true);
                 if (!Thrusters.bot.isPlaying)
                     Thrusters.bot.Play();
             }
+
             vector2.y = -1;
         }
         else
@@ -231,12 +236,18 @@ public class Movement : MonoBehaviour
             Thrusters.bot.gameObject.SetActive(false);
         }
 
+        if (!Input.GetKey((KeyCode) input.bottom) && !Input.GetKey((KeyCode) input.top) &&
+            !Input.GetKey((KeyCode) input.left) && !Input.GetKey((KeyCode) input.right))
+        {
+            FindObjectOfType<AudioManager>().StopLoop("Robot");
+        }
+
         return vector2.normalized;
     }
 
     private void GetMode()
     {
-        if (Input.GetKeyDown((KeyCode)input.switchMode))
+        if (Input.GetKeyDown((KeyCode) input.switchMode))
         {
             if (isInside)
                 flyingMode = !flyingMode;
@@ -248,6 +259,7 @@ public class Movement : MonoBehaviour
             else
             {
                 Debug.Log("I am rolling!");
+                FindObjectOfType<AudioManager>().StopLoop("Robot");
                 ChangeToRollMode();
             }
         }
@@ -269,5 +281,3 @@ public class Movement : MonoBehaviour
         //rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
     }
 }
-
-
