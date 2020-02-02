@@ -14,6 +14,16 @@ public struct charInput
     public int fix;
 }
 
+[System.Serializable]
+public struct thrusters
+{
+    public ParticleSystem top;
+    public ParticleSystem left;
+    public ParticleSystem right;
+    public ParticleSystem bot;
+
+}
+
 public class Movement : MonoBehaviour
 {
     public float speed;
@@ -24,6 +34,7 @@ public class Movement : MonoBehaviour
     public float thrusterMultiplier;
     [Range(0, 200)]
     public float rollMultiplier;
+    public thrusters Thrusters;
 
     private Vector2 screenBounds;
     private float objectWidth;
@@ -34,6 +45,7 @@ public class Movement : MonoBehaviour
     private Rigidbody2D robotRigidbody;
     private GameObject breaches;
     private Rigidbody2D rigidbody2D;
+    
 
     int currentObjectInstance = -1;
 
@@ -163,22 +175,50 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey((KeyCode)input.left))
         {
+            Thrusters.left.gameObject.SetActive(true);
+            if (!Thrusters.left.isPlaying)
+                Thrusters.left.Play();
             vector2.x = -1;
+        }
+        else
+        {
+            Thrusters.left.gameObject.SetActive(false);
         }
 
         if (Input.GetKey((KeyCode)input.right))
         {
+            Thrusters.right.gameObject.SetActive(true);
+            if (!Thrusters.right.isPlaying)
+                Thrusters.right.Play();
             vector2.x = 1;
+        }
+        else
+        {
+            Thrusters.right.gameObject.SetActive(false);
         }
 
         if (Input.GetKey((KeyCode)input.top))
         {
+            Thrusters.top.gameObject.SetActive(true);
+            if(!Thrusters.top.isPlaying)
+                Thrusters.top.Play();
             vector2.y = 1;
+        }
+        else
+        {
+            Thrusters.top.gameObject.SetActive(false);
         }
 
         if (Input.GetKey((KeyCode)input.bottom))
         {
+            Thrusters.bot.gameObject.SetActive(true);
+            if (!Thrusters.bot.isPlaying)
+                Thrusters.bot.Play();
             vector2.y = -1;
+        }
+        else
+        {
+            Thrusters.bot.gameObject.SetActive(false);
         }
 
         return vector2.normalized;
