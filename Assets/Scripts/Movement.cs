@@ -175,9 +175,12 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey((KeyCode)input.left))
         {
-            Thrusters.left.gameObject.SetActive(true);
-            if (!Thrusters.left.isPlaying)
-                Thrusters.left.Play();
+            if (FlyingMode)
+            {
+                Thrusters.left.gameObject.SetActive(true);
+                if (!Thrusters.left.isPlaying)
+                    Thrusters.left.Play();
+            }
             vector2.x = -1;
         }
         else
@@ -187,9 +190,12 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey((KeyCode)input.right))
         {
-            Thrusters.right.gameObject.SetActive(true);
-            if (!Thrusters.right.isPlaying)
-                Thrusters.right.Play();
+            if (FlyingMode)
+            {
+                Thrusters.right.gameObject.SetActive(true);
+                if (!Thrusters.right.isPlaying)
+                    Thrusters.right.Play();
+            }
             vector2.x = 1;
         }
         else
@@ -199,9 +205,12 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey((KeyCode)input.top))
         {
-            Thrusters.top.gameObject.SetActive(true);
-            if(!Thrusters.top.isPlaying)
-                Thrusters.top.Play();
+            if (FlyingMode)
+            {
+                Thrusters.top.gameObject.SetActive(true);
+                if (!Thrusters.top.isPlaying)
+                    Thrusters.top.Play();
+            }
             vector2.y = 1;
         }
         else
@@ -211,9 +220,12 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey((KeyCode)input.bottom))
         {
-            Thrusters.bot.gameObject.SetActive(true);
-            if (!Thrusters.bot.isPlaying)
-                Thrusters.bot.Play();
+            if (FlyingMode)
+            {
+                Thrusters.bot.gameObject.SetActive(true);
+                if (!Thrusters.bot.isPlaying)
+                    Thrusters.bot.Play();
+            }
             vector2.y = -1;
         }
         else
