@@ -59,10 +59,12 @@ public class Actions : MonoBehaviour
                 {
                     if (fixProgress >= 1)
                     {
+                        BreachGenerator.CurrentNumberOnShip -= 1;
                         DisableBreach(breachesPositions[i].gameObject);
                         repaired++;
                         fixProgress = 0;
                         slider.value = fixProgress;
+                        slider.gameObject.SetActive(false);
                     }
                     else
                     {
