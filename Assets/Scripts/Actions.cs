@@ -9,6 +9,10 @@ public class Actions : MonoBehaviour
     public int fixInput;
     public float FixSpeed = 0.1f;
 
+    [Header("Sprites")]
+    public SpriteRenderer frontRobot;
+    public SpriteRenderer backRobot;
+
     private float fixProgress = 0;
     private Slider slider;
     private GameObject breaches;
@@ -20,6 +24,7 @@ public class Actions : MonoBehaviour
         movement = GetComponent<Movement>();
         slider = GetComponentInChildren<Slider>();
         slider.gameObject.SetActive(false);
+        backRobot.enabled = false;
     }
 
     // Update is called once per frame
@@ -32,12 +37,21 @@ public class Actions : MonoBehaviour
             if (!movement.FlyingMode)
                 FixBreach();
 
+            if(!backRobot.enabled)
+            {
+                frontRobot.enabled = false;
+                backRobot.enabled = true;
+            }
+
         }
         else
         {
             fixProgress = 0;
             slider.value = fixProgress;
             slider.gameObject.SetActive(false);
+
+            frontRobot.enabled = true;
+            backRobot.enabled = false;
         }
 
 
