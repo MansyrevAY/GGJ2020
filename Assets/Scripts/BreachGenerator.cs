@@ -54,11 +54,6 @@ public class BreachGenerator : MonoBehaviour
                 timeToNextFlare = Random.Range(minTimeToFlare, maxTimeToFlare);
                 flareAnimator.SetTrigger("Flare");
             }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                GenerateBreaches();
-            }
         }
     }
 
