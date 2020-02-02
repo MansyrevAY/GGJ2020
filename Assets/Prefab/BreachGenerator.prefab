@@ -47,7 +47,18 @@ MonoBehaviour:
   breachPrefab: {fileID: 5491498988200502227, guid: 2768fcea9bb611547be150f8d69374a5,
     type: 3}
   borders: {fileID: 0}
-  maxNumberOfBreachesPerSolarFlare: 2
+  maxNumberOfBreachesPerSolarFlare: 3
+  maxNumberOnShip: 30
   otherBreaches:
     serializedVersion: 2
     m_Bits: 256
+  shipMask:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacle:
+    serializedVersion: 2
+    m_Bits: 0
+  timeLeft: 120
+  timeToNextFlare: 0
+  minTimeToFlare: 5
+  maxTimeToFlare: 15

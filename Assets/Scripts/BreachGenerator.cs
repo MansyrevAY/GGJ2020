@@ -17,6 +17,7 @@ public class BreachGenerator : MonoBehaviour
     public static int CurrentNumberOnShip { get; set; }
 
     public float timeLeft;
+    [HideInInspector]
     public float timeToNextFlare;
 
     public float minTimeToFlare;
