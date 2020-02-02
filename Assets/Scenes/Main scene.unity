@@ -1281,6 +1281,26 @@ PrefabInstance:
       propertyPath: flareAnimator
       value: 
       objectReference: {fileID: 1316100771}
+    - target: {fileID: 7532211458190830892, guid: ebbf3e7f857c7684a9cd98ca40c578e2,
+        type: 3}
+      propertyPath: gameOverAnimator
+      value: 
+      objectReference: {fileID: 2400000515500302513}
+    - target: {fileID: 7532211458190830892, guid: ebbf3e7f857c7684a9cd98ca40c578e2,
+        type: 3}
+      propertyPath: timeLeft
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532211458190830892, guid: ebbf3e7f857c7684a9cd98ca40c578e2,
+        type: 3}
+      propertyPath: maxNumberOnShip
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532211458190830892, guid: ebbf3e7f857c7684a9cd98ca40c578e2,
+        type: 3}
+      propertyPath: maxNumberOfBreachesPerSolarFlare
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7532211458190830894, guid: ebbf3e7f857c7684a9cd98ca40c578e2,
         type: 3}
       propertyPath: m_Name
@@ -1901,6 +1921,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1653732108240358873, guid: 99f0bf038412a354ebe005c427708b1a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823803581386743464, guid: 99f0bf038412a354ebe005c427708b1a,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823803581386743464, guid: 99f0bf038412a354ebe005c427708b1a,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2400000514904068797, guid: 99f0bf038412a354ebe005c427708b1a,
         type: 3}
       propertyPath: m_Name
@@ -1961,8 +1996,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8051570922265226468, guid: 99f0bf038412a354ebe005c427708b1a,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051570922265226468, guid: 99f0bf038412a354ebe005c427708b1a,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99f0bf038412a354ebe005c427708b1a, type: 3}
+--- !u!95 &2400000515500302513 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3321223159124737560, guid: 99f0bf038412a354ebe005c427708b1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2400000515500302512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4765054689177972663
 PrefabInstance:
   m_ObjectHideFlags: 0
