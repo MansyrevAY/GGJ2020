@@ -11,7 +11,6 @@ public struct charInput
     public int left;
     public int right;
     public int switchMode;
-    public int fix;
 }
 
 [System.Serializable]
@@ -29,7 +28,6 @@ public class Movement : MonoBehaviour
     public float speed;
     public charInput input;
     public Collider2D borders;
-    public float repairOffset;
     [Range(0,200)]
     public float thrusterMultiplier;
     [Range(0, 200)]
@@ -164,14 +162,14 @@ public class Movement : MonoBehaviour
         Vector2 vector2 = Vector2.zero;
 
 //      To check the pressed key number
-//        if (Input.anyKey)
-//        {
-//            foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-//            {
-//                if (Input.GetKeyDown(kcode))
-//                    Debug.Log("KeyCode down: " + (int)kcode);
-//            }
-//        }
+        if (Input.anyKey)
+        {
+            foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+            {
+                if (Input.GetKeyDown(kcode))
+                    Debug.Log("KeyCode down: " + (int)kcode);
+            }
+        }
 
         if (Input.GetKey((KeyCode)input.left))
         {
@@ -269,57 +267,6 @@ public class Movement : MonoBehaviour
         gameObject.layer = 10;
         GetComponent<Collider2D>().isTrigger = false;
         //rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
-    }
-
-    private void FixBreach()
-    {
-        Transform[] breachesPositions = breaches.GetComponentsInChildren<Transform>();
-
-        if(breachesPositions.Length > 1)
-        {
-            int repaired = 0;
-            // Because i = 0 is parent object
-            for (int i = 1; i < breachesPositions.Length; i++)
-            {
-                float robotBreachDistance = Vector3.Distance(breachesPositions[i].position, transform.position);
-                Debug.Log(robotBreachDistance);
-                if (robotBreachDistance < repairOffset)
-                {
-                    breachesPositions[i].gameObject.SetActive(false);
-                    repaired++;
-                }
-            }
-
-            Debug.Log($"Repaired: {repaired}");
-
-            foreach (Transform breachesPosition in breachesPositions)
-            {
-                if (!breachesPosition.gameObject.activeInHierarchy)
-                {
-                    Debug.Log($"{breachesPosition.position} is destroyed");
-                    Destroy(breachesPosition.gameObject);
-                }
-            }
-        }
-        else
-        {
-            Debug.Log("No breaches to repair");
-        }
-
-    }
-
-    private bool IsInside(Vector3 mov)
-    {
-        bool isInside = true;
-
-        if (mov.x > borders.bounds.center.x + borders.bounds.extents.x ||
-            mov.x < borders.bounds.center.x - borders.bounds.extents.x)
-            isInside = false;
-        if (mov.y > borders.bounds.center.y + borders.bounds.extents.y ||
-            mov.y < borders.bounds.center.y - borders.bounds.extents.y)
-            isInside = false;
-
-        return isInside;
     }
 }
 

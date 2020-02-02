@@ -15022,7 +15022,6 @@ MonoBehaviour:
     left: 97
     right: 100
     switchMode: 304
-    fix: 0
   borders: {fileID: 0}
   repairOffset: 0
   thrusterMultiplier: 0
@@ -15044,9 +15043,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ebd37b50cacb14ba21a7620df713c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repairOffset: 0
-  fixInput: 0
-  FixSpeed: 0.01
+  repairOffset: 1
+  fixInput: 113
+  FixSpeed: 0.02
 --- !u!50 &-2471920124021421121
 Rigidbody2D:
   serializedVersion: 4
