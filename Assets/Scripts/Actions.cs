@@ -30,7 +30,9 @@ public class Actions : MonoBehaviour
         {
 
             if (!movement.FlyingMode)
+            {
                 FixBreach();
+            }
 
         }
         else
@@ -38,6 +40,7 @@ public class Actions : MonoBehaviour
             fixProgress = 0;
             slider.value = fixProgress;
             slider.gameObject.SetActive(false);
+            FindObjectOfType<AudioManager>().StopLoop("Repair");
         }
 
 
@@ -65,6 +68,7 @@ public class Actions : MonoBehaviour
                         fixProgress = 0;
                         slider.value = fixProgress;
                         slider.gameObject.SetActive(false);
+                        FindObjectOfType<AudioManager>().StopLoop("Repair");
                     }
                     else
                     {
@@ -72,6 +76,7 @@ public class Actions : MonoBehaviour
                         fixProgress += FixSpeed;
                         slider.value = fixProgress;
                         Debug.Log(fixProgress);
+                        FindObjectOfType<AudioManager>().PlayLoop("Repair");
                     }
                 }
             }
