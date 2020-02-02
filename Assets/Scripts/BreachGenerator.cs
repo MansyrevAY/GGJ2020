@@ -15,6 +15,7 @@ public class BreachGenerator : MonoBehaviour
     public LayerMask obstacle;
 
     public Animator flareAnimator;
+    public Animator gameOverAnimator;
 
     public static int CurrentNumberOnShip { get; set; }
 
@@ -42,6 +43,7 @@ public class BreachGenerator : MonoBehaviour
             timeToNextFlare -= Time.deltaTime;
             if (timeLeft < 0 && !gameOver)
             {
+                gameOverAnimator.SetTrigger("Win");
                 Debug.Log("YOU WON");
                 gameOver = true;
             }
@@ -100,6 +102,7 @@ public class BreachGenerator : MonoBehaviour
         }
         else
         {
+            gameOverAnimator.SetTrigger("Lose");
             print("GAME OVER!");
             gameOver = true;
         }
