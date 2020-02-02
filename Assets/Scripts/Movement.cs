@@ -172,7 +172,7 @@ public class Movement : MonoBehaviour
         {
             if (FlyingMode)
             {
-                FindObjectOfType<AudioManager>().PlayLoop("Robot");
+                FindObjectOfType<AudioManager>().PlayLoop("Robot" + gameObject.name);
                 Thrusters.left.gameObject.SetActive(true);
                 if (!Thrusters.left.isPlaying)
                     Thrusters.left.Play();
@@ -189,7 +189,7 @@ public class Movement : MonoBehaviour
         {
             if (FlyingMode)
             {
-                FindObjectOfType<AudioManager>().PlayLoop("Robot");
+                FindObjectOfType<AudioManager>().PlayLoop("Robot" + gameObject.name);
                 Thrusters.right.gameObject.SetActive(true);
                 if (!Thrusters.right.isPlaying)
                     Thrusters.right.Play();
@@ -206,7 +206,7 @@ public class Movement : MonoBehaviour
         {
             if (FlyingMode)
             {
-                FindObjectOfType<AudioManager>().PlayLoop("Robot");
+                FindObjectOfType<AudioManager>().PlayLoop("Robot" + gameObject.name);
                 Thrusters.top.gameObject.SetActive(true);
                 if (!Thrusters.top.isPlaying)
                     Thrusters.top.Play();
@@ -223,7 +223,7 @@ public class Movement : MonoBehaviour
         {
             if (FlyingMode)
             {
-                FindObjectOfType<AudioManager>().PlayLoop("Robot");
+                FindObjectOfType<AudioManager>().PlayLoop("Robot" + gameObject.name);
                 Thrusters.bot.gameObject.SetActive(true);
                 if (!Thrusters.bot.isPlaying)
                     Thrusters.bot.Play();
@@ -239,7 +239,7 @@ public class Movement : MonoBehaviour
         if (!Input.GetKey((KeyCode) input.bottom) && !Input.GetKey((KeyCode) input.top) &&
             !Input.GetKey((KeyCode) input.left) && !Input.GetKey((KeyCode) input.right))
         {
-            FindObjectOfType<AudioManager>().StopLoop("Robot");
+            FindObjectOfType<AudioManager>().StopLoop("Robot" + gameObject.name);
         }
 
         return vector2.normalized;
@@ -259,7 +259,7 @@ public class Movement : MonoBehaviour
             else
             {
                 Debug.Log("I am rolling!");
-                FindObjectOfType<AudioManager>().StopLoop("Robot");
+                FindObjectOfType<AudioManager>().StopLoop("Robot" + gameObject.name);
                 ChangeToRollMode();
             }
         }

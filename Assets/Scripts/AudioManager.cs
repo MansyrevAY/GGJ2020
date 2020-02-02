@@ -12,16 +12,6 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        // This object should be unique in a scene
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("AudioManager");
-        if (objs.Length > 1)
-        {
-            Destroy(this.gameObject);
-        }
-
-        DontDestroyOnLoad(this.gameObject);
-
-
         foreach (Sound sound in sounds)
         {
             sound.source = gameObject.AddComponent<AudioSource>();

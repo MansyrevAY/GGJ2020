@@ -361,7 +361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 681.2, y: 265.4}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &129591363
@@ -5443,7 +5443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250883190}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.4, y: 19.01, z: 1}
+  m_LocalPosition: {x: -0.4, y: 19.01, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6841,6 +6841,31 @@ PrefabInstance:
       propertyPath: gameOverAnimator
       value: 
       objectReference: {fileID: 2400000515500302513}
+    - target: {fileID: 7532211458190830892, guid: ebbf3e7f857c7684a9cd98ca40c578e2,
+        type: 3}
+      propertyPath: timeLeft
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532211458190830892, guid: ebbf3e7f857c7684a9cd98ca40c578e2,
+        type: 3}
+      propertyPath: maxNumberOnShip
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532211458190830892, guid: ebbf3e7f857c7684a9cd98ca40c578e2,
+        type: 3}
+      propertyPath: maxNumberOfBreachesPerSolarFlare
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532211458190830892, guid: ebbf3e7f857c7684a9cd98ca40c578e2,
+        type: 3}
+      propertyPath: minTimeToFlare
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532211458190830892, guid: ebbf3e7f857c7684a9cd98ca40c578e2,
+        type: 3}
+      propertyPath: maxTimeToFlare
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7532211458190830894, guid: ebbf3e7f857c7684a9cd98ca40c578e2,
         type: 3}
       propertyPath: m_Name
@@ -7332,7 +7357,7 @@ PrefabInstance:
     - target: {fileID: 6500935757449965351, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_Name
-      value: Robot (1)
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 6500935757449965351, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
@@ -7923,7 +7948,7 @@ PrefabInstance:
     - target: {fileID: 4571779510837086020, guid: c6fee5c547e802649837c0109818fe80,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4571779510837086020, guid: c6fee5c547e802649837c0109818fe80,
         type: 3}
@@ -8621,7 +8646,7 @@ PrefabInstance:
     - target: {fileID: 6500935757449965351, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
       propertyPath: m_Name
-      value: Robot
+      value: Red
       objectReference: {fileID: 0}
     - target: {fileID: 6500935757449965351, guid: 04749769ad303ec4ca8ddbf181d62cc2,
         type: 3}
@@ -8667,6 +8692,61 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7112679440613492988, guid: ddfed03944524984d9c241a7edc75888,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112679440613492988, guid: ddfed03944524984d9c241a7edc75888,
+        type: 3}
+      propertyPath: sounds.Array.data[5].name
+      value: RobotBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112679440613492988, guid: ddfed03944524984d9c241a7edc75888,
+        type: 3}
+      propertyPath: sounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4bcc810327e53014ca8030e24d4210ec, type: 3}
+    - target: {fileID: 7112679440613492988, guid: ddfed03944524984d9c241a7edc75888,
+        type: 3}
+      propertyPath: sounds.Array.data[5].volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112679440613492988, guid: ddfed03944524984d9c241a7edc75888,
+        type: 3}
+      propertyPath: sounds.Array.data[5].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112679440613492988, guid: ddfed03944524984d9c241a7edc75888,
+        type: 3}
+      propertyPath: sounds.Array.data[6].name
+      value: RepairBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112679440613492988, guid: ddfed03944524984d9c241a7edc75888,
+        type: 3}
+      propertyPath: sounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: cf07caf0d166592479b7949ae2a0b943, type: 3}
+    - target: {fileID: 7112679440613492988, guid: ddfed03944524984d9c241a7edc75888,
+        type: 3}
+      propertyPath: sounds.Array.data[6].volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112679440613492988, guid: ddfed03944524984d9c241a7edc75888,
+        type: 3}
+      propertyPath: sounds.Array.data[6].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112679440613492988, guid: ddfed03944524984d9c241a7edc75888,
+        type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: RobotRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112679440613492988, guid: ddfed03944524984d9c241a7edc75888,
+        type: 3}
+      propertyPath: sounds.Array.data[4].name
+      value: RepairRed
+      objectReference: {fileID: 0}
     - target: {fileID: 7112679440613492989, guid: ddfed03944524984d9c241a7edc75888,
         type: 3}
       propertyPath: m_Name

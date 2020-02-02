@@ -67,7 +67,7 @@ public class BreachGenerator : MonoBehaviour
         if (CurrentNumberOnShip < maxNumberOnShip)
         {
             // TODO: LIMIT WITH MAX NUMBER OF BREACHES OTHERWISE IT MIGHT CRASH
-            int numberOfBreaches = Random.Range(1, maxNumberOfBreachesPerSolarFlare + 1);
+            int numberOfBreaches = Random.Range(4, maxNumberOfBreachesPerSolarFlare + 1);
             CurrentNumberOnShip += numberOfBreaches;
             for (int i = 0; i < numberOfBreaches; i++)
             {

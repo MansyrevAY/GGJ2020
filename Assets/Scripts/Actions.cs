@@ -51,7 +51,7 @@ public class Actions : MonoBehaviour
             fixProgress = 0;
             slider.value = fixProgress;
             slider.gameObject.SetActive(false);
-            FindObjectOfType<AudioManager>().StopLoop("Repair");
+            FindObjectOfType<AudioManager>().StopLoop("Repair" + gameObject.name);
 
             frontRobot.enabled = true;
             backRobot.enabled = false;
@@ -82,7 +82,7 @@ public class Actions : MonoBehaviour
                         fixProgress = 0;
                         slider.value = fixProgress;
                         slider.gameObject.SetActive(false);
-                        FindObjectOfType<AudioManager>().StopLoop("Repair");
+                        FindObjectOfType<AudioManager>().StopLoop("Repair" + gameObject.name);
                     }
                     else
                     {
@@ -90,7 +90,7 @@ public class Actions : MonoBehaviour
                         fixProgress += FixSpeed;
                         slider.value = fixProgress;
                         Debug.Log(fixProgress);
-                        FindObjectOfType<AudioManager>().PlayLoop("Repair");
+                        FindObjectOfType<AudioManager>().PlayLoop("Repair" + gameObject.name);
                     }
                 }
             }
